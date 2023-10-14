@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${workshopName} + ' Quiz'"></title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/img/meteor-favicon.png}" type="image/png" rel="icon">
+</head>
+<body class="text-center">
+<h1 th:text="${workshopName} + ' Quiz'"></h1>
+<br><p/>
+<img src="/img/RotaryBallymena.png" height="100" width="300"/>
+<br><p/>
+<div class="col-sm-6 mx-auto">
+<div th:if="${param.error}">
+    <p class="text-warning">Invalid username and password.</p></div>
+<div th:if="${param.logout}" class="alert alert-success">
+    You have been logged out.</div>
+<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<form th:class="form-signin" th:action="@{/login}" method="post">
+    <div>
+        <input class="form-control" type="text" name="username" placeholder="table number" required autofocus/>
+    </div>
+    <div>
+        <input class="form-control" type="password" name="password" placeholder="Ask for your Password" required/>
+    </div>
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log in" />
+</form>
+</div>
+
+</body>
+<footer class="text-center fixed-bottom">
+   <a href="https://meteorsoftware.xyz">
+       <img alt="Meteor Software Logo" title="Meteor Software Image"
+            th:src="@{/img/logo_meteor_software_ltd_sml.jpg}" height="101" width="150" />
+   </a>
+</footer>
+</html>
