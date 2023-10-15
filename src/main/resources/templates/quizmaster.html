@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.6.3/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: 450px}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height:auto;}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">QuizMaster</a></li>
+                <li><a href="#">Marker</a></li>
+                <li><a href="#">Contestant</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="login?logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <p><button onclick="loadUserAdmin()" id="loadUserAdmin">User Admin</button></p>
+            <p><button onclick="loadQuizAdmin()" id="loadQuizAdmin">Quiz Admin</button></p>
+            <p><button onclick="loadQuizResults()" id="loadResults">Results</button></p>
+            <p><button onclick="loadQuizQuestionsEditable()" id="loadQuestions">Questions</button></p>
+        </div>
+        <div class="col-sm-8 text-left">
+            <div id="quizPanel">
+                <h1>Welcome</h1>
+                <p>This is the area which will have either:.</p>
+                <ul>
+                    <li>List of Teams; Username & Passwords</li>
+                    <li>List of Rounds - > Release and Status</li>
+                    <li>Marks Summary</li>
+                    <li>Ability to Add or Edit Questions</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p>ADS</p>
+            </div>
+            <div class="well">
+                <p>ADS</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function loadUserAdmin() {
+        $.post("load_user_admin").done(function (fragment) {
+           console.log(fragment);
+            $("#quizPanel").replaceWith(fragment);
+        });
+    }
+    function loadQuizAdmin() {
+
+        $.post("load_quiz_admin").done(function (fragment) {
+            console.log(fragment);
+            $("#quizPanel").replaceWith(fragment);
+        });
+    }
+    function loadQuizResults() {
+
+        $.post("load_quiz_results").done(function (fragment) {
+            console.log(fragment);
+            $("#quizPanel").replaceWith(fragment);
+        });
+    }
+
+    function loadQuizQuestionsEditable() {
+
+        $.post("load_quiz_questions_editable").done(function (fragment) {
+            console.log(fragment);
+            $("#quizPanel").replaceWith(fragment);
+        });
+    }
+
+</script>
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
