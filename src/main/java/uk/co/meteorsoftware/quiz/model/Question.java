@@ -5,7 +5,10 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Question {
-    public String question;
-    public String correctAnswer;
+    private String question;
+    private String imageLink;
+    private Boolean isPictureQuestion;
+    private String correctAnswer;
+    private Boolean isRevealed;
 
 }

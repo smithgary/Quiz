@@ -34,4 +34,33 @@ public class ContestantController {
         return "testajaxfragment";
         //return "testajaxfragment :: test_frag";
     }
+
+    @PostMapping("load_user_admin")
+    public String getQuizUserAdmin(Model model) {
+        // Todo - load actual
+        return "quizUserAdmin";
+    }
+
+    @PostMapping("load_quiz_admin")
+    public String getQuizAdmin(Model model) {
+        // Todo - load actual
+        return "quizAdmin";
+    }
+
+    @PostMapping("load_quiz_results")
+    public String getQuizResults(Model model) {
+        // Todo - load actual
+        return "quizResults";
+    }
+
+    @PostMapping("load_quiz_questions_editable")
+    public String getQuizQuestionsEditable(Model model) {
+        // Todo - load actual
+        return "quizQuestions";
+    }
+
+    @GetMapping("/quizmaster")
+    public String getQuizMasterView(Model model) {
+        return "quizmaster";
+    }
 }
